@@ -1,2 +1,2 @@
 # Full-Stack-Social-Media
-Full-Stack-MERN / Social Media App | React, Tailwind CSS
+React Node.js MySQL Social Media App Tutorial | Full Stack Social Network App
