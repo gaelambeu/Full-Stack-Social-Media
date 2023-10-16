@@ -28,5 +28,5 @@ app.use(morgan("dev"));
 
 
 app.listen(PORT, () => {
-    console.log(`Dev Server running on port: ${PORT}`)
+    console.log(`Server running on port: ${PORT}`)
 })
