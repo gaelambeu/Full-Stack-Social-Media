@@ -18,6 +18,12 @@ const commentSchema =  new mongoose.Schema(
                 updated_At: { type: Date, default: Date.now() },
                 likes: [{ type: String }],
             }
-        ]
-    }
+        ],
+        likes: [{ type: String }],
+    }, 
+    { timestamps: true }
 );
+
+const Comments = mongoose.model("Comments", commentSchema);
+
+export default Comments;
