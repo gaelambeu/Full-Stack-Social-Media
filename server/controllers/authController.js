@@ -10,7 +10,12 @@ export const register = async(req, res, next) => {
     }
 
     try {
+        const userExit = await Users.findOne({ email });
         
+        if (userExit) {
+            next("Email Address already exists");
+            return;
+        }
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message })
