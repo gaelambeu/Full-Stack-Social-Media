@@ -1,4 +1,5 @@
 import Users from "../models/userModel.js";
+import { hashString } from "../utils/index.js";
 
 export const register = async(req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
@@ -17,7 +18,7 @@ export const register = async(req, res, next) => {
             return;
         }
 
-        const hashedPassword =  await hashPassword(password)
+        const hashedPassword =  await hashString(password)
 
     } catch (error) {
         console.log(error);
