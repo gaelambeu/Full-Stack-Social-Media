@@ -8,4 +8,11 @@ export const register = async(req, res, next) => {
         next("Provide Required Fields!");
         return;
     }
+
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ message: error.message })
+    }
 }
