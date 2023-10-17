@@ -20,4 +20,11 @@ export const sendverificationEmail = async (user, res) => {
     const token = _id + uuidv4();
 
     const link = APP_URL + "users/verify/" + _id + "/" + token;
+
+    // mail options
+    const mailOptions = {
+        from: AUTH_EMAIL,
+        to: email,
+        subject: "Email Verification"
+    }
 }
