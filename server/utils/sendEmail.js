@@ -13,3 +13,11 @@ let transporter = nodemailer.createTransport({
         pass: AUTH_PASSWORD,
     },
 })
+
+export const sendverificationEmail = async (user, res) => {
+    const { _id, email, lastName } = user;
+
+    const token = _id + uuidv4();
+
+    const link = APP_URL + "users/verify/" + _id + "/" + token;
+}
