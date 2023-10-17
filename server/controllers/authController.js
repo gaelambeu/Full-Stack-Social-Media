@@ -16,6 +16,9 @@ export const register = async(req, res, next) => {
             next("Email Address already exists");
             return;
         }
+
+        const hashedPassword =  await hashPassword(password)
+
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message })
