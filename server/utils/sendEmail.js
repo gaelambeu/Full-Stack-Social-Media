@@ -25,6 +25,15 @@ export const sendverificationEmail = async (user, res) => {
     const mailOptions = {
         from: AUTH_EMAIL,
         to: email,
-        subject: "Email Verification"
+        subject: "Email Verification",
+        html:`<div
+        style='font-family: Arial, sans-serif; font-size: 20px; color: #333; background-color:'>
+        <h1 style="color: rgb(8, 56, 188)">Please verify your email address</h1>
+        <br>
+        <h4>Hi, ${lastName}</h4>
+        <p>
+            Please v
+        </p>
+        </div>`
     }
 }
