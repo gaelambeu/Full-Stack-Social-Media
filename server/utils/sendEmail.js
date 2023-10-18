@@ -49,6 +49,13 @@ export const sendverificationEmail = async (user, res) => {
 
     try {
         const hashedToken = await hashPassword(token);
+
+        const newVerifiedEmail = await Verification.create({
+            userId: _id,
+            token: hashedToken,
+            createdAt: Date.now(),
+            expiresAt: Date.now() + 3600000,
+        })
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: "Something went wrong" })
