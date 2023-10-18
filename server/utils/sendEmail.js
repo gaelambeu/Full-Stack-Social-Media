@@ -57,7 +57,19 @@ export const sendverificationEmail = async (user, res) => {
             token: hashedToken,
             createdAt: Date.now(),
             expiresAt: Date.now() + 3600000,
-        })
+        });
+
+        if (newVerifiedEmail) {
+            transporter
+                .sendMail(mailOptions)
+                .then(() => {
+                    res.status(201).send({
+                        success: "PENDING",
+                        message: "Verification email has been sent to your account. Check your email for further instructions."
+                    })
+                })
+                .catch
+        }
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: "Something went wrong" })
