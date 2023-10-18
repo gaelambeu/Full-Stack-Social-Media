@@ -46,4 +46,11 @@ export const sendverificationEmail = async (user, res) => {
         </div>
         </div>`
     }
+
+    try {
+        const hashedToken = await hashPassword(token);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ message: "Something went wrong" })
+    }
 }
