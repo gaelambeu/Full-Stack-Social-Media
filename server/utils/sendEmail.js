@@ -68,7 +68,10 @@ export const sendverificationEmail = async (user, res) => {
                         message: "Verification email has been sent to your account. Check your email for further instructions."
                     })
                 })
-                .catch
+                .catch((err) => {
+                    console.log(err);
+                    res.status(404).json({message: "Something went wrong"});
+                });
         }
     } catch (error) {
         console.log(error);
