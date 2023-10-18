@@ -1,6 +1,8 @@
 import nodemailer from "nodemailer"
 import dotenv from "dotenv"
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "uuid";
+import { hashString } from "./index.js"
+import { Verification } from "../models/emailVerification.js"
 
 dotenv.config();
 
@@ -48,7 +50,7 @@ export const sendverificationEmail = async (user, res) => {
     }
 
     try {
-        const hashedToken = await hashPassword(token);
+        const hashedToken = await hashString(token);
 
         const newVerifiedEmail = await Verification.create({
             userId: _id,
