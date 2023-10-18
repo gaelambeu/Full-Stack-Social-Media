@@ -36,3 +36,14 @@ export const register = async(req, res, next) => {
         res.status(404).json({ message: error.message })
     }
 }
+
+export const login = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ message: error.message })
+    }
+}
