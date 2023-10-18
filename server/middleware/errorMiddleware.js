@@ -21,6 +21,13 @@ const errorMiddleware = (err, req, res, next) => {
         defaultError.statusCode = 404;
         defaultError.message = `${Object.values(
             err.keyValue
-        )} field has t`
+        )} field has to be unique!`;
     }
+
+    res.status(defaultError.statusCode).json({
+        success: defaultError.success,
+        message: defaultError.message,
+    })
 }
+
+export default errorMiddleware;
