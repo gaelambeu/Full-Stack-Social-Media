@@ -1,6 +1,6 @@
 import { compare } from "bcryptjs";
 import Users from "../models/userModel.js";
-import { hashString } from "../utils/index.js";
+import { compareString, hashString } from "../utils/index.js";
 import { sendverificationEmail } from "../utils/sendEmail.js";
 
 export const register = async(req, res, next) => {
@@ -67,7 +67,13 @@ export const login = async (req, res, next) => {
         }
 
         // compare password
-        const isMatch = await comparePassword(password, user?.password);
+        const isMatch = await compareString(password, user?.password);
+
+        if(!isMatch) {
+            next("invalid email or password");
+            return;
+        }
+
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message })
