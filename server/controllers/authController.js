@@ -41,6 +41,17 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
 
     try {
+        //validation
+        if(!email || !password) {
+            next("Please Provide User Credentials")
+            return;
+        }
+
+        // find user by email
+        const user = await Users.findOne({ email }).select("+password").populate({
+            path: "friends",
+            select: "firstName lastName location profileUrl -password",
+        })
         
     } catch (error) {
         console.log(error);
