@@ -1,4 +1,4 @@
-import { compare } from "bcryptjs";
+import  compare from "bcryptjs";
 import Users from "../models/userModel.js";
 import { compareString, createJWT, hashString } from "../utils/index.js";
 import { sendverificationEmail } from "../utils/sendEmail.js";
