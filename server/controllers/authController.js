@@ -57,6 +57,13 @@ export const login = async (req, res, next) => {
             next("Invalid email or password");
             return;
         }
+
+        if(!user?.verified) {
+            next(
+                "User email is not verified. Check your email account and verify your email"
+            );
+            return;
+        }
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message })
