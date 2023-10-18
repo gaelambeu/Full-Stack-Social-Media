@@ -52,7 +52,11 @@ export const login = async (req, res, next) => {
             path: "friends",
             select: "firstName lastName location profileUrl -password",
         })
-        
+
+        if(!user) {
+            next("Invalid email or password");
+            return;
+        }
     } catch (error) {
         console.log(error);
         res.status(404).json({ message: error.message })
