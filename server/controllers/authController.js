@@ -1,6 +1,6 @@
 import { compare } from "bcryptjs";
 import Users from "../models/userModel.js";
-import { compareString, hashString } from "../utils/index.js";
+import { compareString, createJWT, hashString } from "../utils/index.js";
 import { sendverificationEmail } from "../utils/sendEmail.js";
 
 export const register = async(req, res, next) => {
@@ -73,6 +73,17 @@ export const login = async (req, res, next) => {
             next("invalid email or password");
             return;
         }
+
+            user.password = undefined;
+            
+            const token = createJWT(user?._id);
+
+        res.status(201).json({
+            success: true,
+            message: "Login successfully",
+            user,
+            token,
+        })
 
     } catch (error) {
         console.log(error);
