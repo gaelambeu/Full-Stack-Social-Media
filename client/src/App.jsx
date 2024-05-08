@@ -1,13 +1,9 @@
-import { useState } from 'react'
+import './App.css'
 
-
-function App() {
-
+export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
+    <h1 className="w-full min-h-[100vh]">
+      p
     </h1>
   )
 }
-
-export default App
