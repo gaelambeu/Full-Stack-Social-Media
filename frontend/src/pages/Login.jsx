@@ -2,7 +2,7 @@ import React from 'react'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className="bg-bgColor w-full h-full">Login</div>
   )
 }
 

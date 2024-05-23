@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors:{
+      bgColor: "rgb(var(--color-bg) / <alpha-value>)"
+    },
     extend: {},
   },
   plugins: [],
