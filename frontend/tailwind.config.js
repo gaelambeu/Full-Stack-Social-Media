@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors:{
+    colors: {
       bgColor: "rgb(var(--color-bg) / <alpha-value>)",
       primary: "rgb(var(--color-primary) / <alpha-value>)",
       secondary: "rgb(var(--color-secondary) / <alpha-value>)",
@@ -16,9 +16,16 @@ export default {
         2: "rgb(var(--color-ascent2) / <alpha-value>)",
       },
     },
-
     screens: {
-      md: "768px"
+      sm: "640px",
+
+      md: "768px",
+
+      lg: "1024px",
+
+      xl: "1280px",
+
+      "2xl": "1536px",
     },
     extend: {},
   },
