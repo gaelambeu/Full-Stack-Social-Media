@@ -16,6 +16,17 @@ const Login = () => {
               ShareFun
             </span>
           </div>
+
+
+          <p className="text-ascent-1 text-base font-semibold">
+            Log in to your account
+          </p>
+          <span className="text-sm mt-2 text-ascent-2">Welcome back</span>
+
+
+          <form action="" className="py-8 flex flex-col gap-5">
+            <TextInput />
+          </form>
         </div>
         
         {/* RIGHT */}
