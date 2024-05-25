@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
 import { TextInput } from '../components'
@@ -61,8 +61,8 @@ const Login = () => {
             />
 
             <Link
-              to="/reset-password"
-              className="text-sm text-right"
+              to='/reset-password'
+              className="text-sm text-right text-blue font-semibold"
             >Forgot Password ?</Link>
           </form>
         </div>
