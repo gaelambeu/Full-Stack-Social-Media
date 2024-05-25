@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useDispatch} from "react-redux"
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
@@ -12,6 +13,10 @@ const Login = () => {
   } = useForm({
     mode: "onChange"
   });
+
+  const [errMsg, setErrMsg] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <div className="w-full bg-bgColor h-[100vh] flex items-center justify-center p-6">
@@ -63,7 +68,21 @@ const Login = () => {
             <Link
               to='/reset-password'
               className="text-sm text-right text-blue font-semibold"
-            >Forgot Password ?</Link>
+            >
+              Forgot Password ?
+            </Link>
+
+            {
+              errMsg?.message && (
+                <span className={`text-sm ${
+                  errMsg?.status == "failed" 
+                  ? "text-[#f64949fe]"
+                  : "text-[#2ba150fe]"
+                } mt-0.5`}>
+                  {errMsg?.message}
+                </span>
+              )
+            }
           </form>
         </div>
         
