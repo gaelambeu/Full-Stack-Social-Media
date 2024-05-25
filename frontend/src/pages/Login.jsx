@@ -1,14 +1,24 @@
 import React from 'react'
+import Link from 'react-router-dom'
+import {useForm} from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
 import { TextInput } from '../components'
 
 const Login = () => {
+  const {
+    register, 
+    handleSubmit, 
+    formState: { errors }
+  } = useForm({
+    mode: "onChange"
+  });
+
   return (
     <div className="w-full bg-bgColor h-[100vh] flex items-center justify-center p-6">
       <div className="flex w-full py-8 overflow-hidden shadow-xl md:w-2/3 h-fit lg:h-full 2xl:h-5/6 lg:py-0 bg-primary rounded-xl ">
         
         {/* LEFT */}
-        <div classname="w-full lg:w=1/2 h-full p-10 2xl:px-20 flex flex-col justify-center ">
+        <div classname="w-full lg:w-1/2 h-full p-10 2xl:px-20 flex flex-col justify-center ">
           <div className="flex items-center w-full gap-2 mb-6">
             <div className="p-2 bg-[#065ad8] rounded text-white">
               <TbSocial />
@@ -33,7 +43,27 @@ const Login = () => {
               register={register("email", {
                 required: "Email Address is required"
               })}
+              styles="w-full rounded-full"
+              labelStyle="ml-2"
+              error={errors.email ? errors.email.message: ""}
             />
+
+            <TextInput 
+              name='password'
+              placeholder='*************'
+              label='password'
+              register={register("password", {
+                required: "Email Address is required"
+              })}
+              styles="w-full rounded-full"
+              labelStyle="ml-2"
+              error={errors.password ? errors.password?.message: ""}
+            />
+
+            <Link
+              to="/reset-password"
+              className="text-sm text-right"
+            >Forgot Password ?</Link>
           </form>
         </div>
         
