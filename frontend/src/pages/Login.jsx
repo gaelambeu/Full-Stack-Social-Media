@@ -1,5 +1,6 @@
 import React from 'react'
 import { TbSocial } from "react-icons/tb"
+import { TextInput } from '../components'
 
 const Login = () => {
   return (
@@ -25,7 +26,14 @@ const Login = () => {
 
 
           <form action="" className="py-8 flex flex-col gap-5">
-            <TextInput />
+            <TextInput 
+              name='email'
+              placeholder='email@example.com'
+              label='email'
+              register={register("email", {
+                required: "Email Address is required"
+              })}
+            />
           </form>
         </div>
         
