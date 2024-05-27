@@ -85,7 +85,11 @@ const Login = () => {
             }
 
             {
-              isSubmitting ? <Loading />: <CustomButton />
+              isSubmitting ? <Loading />: <CustomButton 
+
+                type="submit"
+                containerStyles={}
+              />
             }
           </form>
         </div>
