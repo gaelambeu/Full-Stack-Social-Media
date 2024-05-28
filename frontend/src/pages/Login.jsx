@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
+import { BsShare } from "react-icons/bs"
 import { TextInput, Loading, CustomButton } from '../components'
 import { BgImage, NoProfile } from '../assets'
 
@@ -114,6 +115,11 @@ const Login = () => {
               alt="Bg Image" 
               className='w-48 2xl:w-64 h-48 2xl:h-64 rounded-full object-cover'
             />
+
+            <div className="absolute flex items-center gap-1 bg-white right-10 top-10 py-2 px-5 rounded-full">
+              <BsShare sire={14} />
+              <span className="text-xs font-medium">Share</span>
+            </div>
           </div>
         </div>
       </div>
