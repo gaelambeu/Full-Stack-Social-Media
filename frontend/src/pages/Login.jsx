@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import {useDispatch} from "react-redux"
-import {Link} from 'react-router-dom'
-import {useForm} from "react-hook-form"
+import { useDispatch } from "react-redux"
+import { Link } from 'react-router-dom'
+import { useForm } from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
 import { TextInput, Loading, CustomButton } from '../components'
-import {BgImage, NoProfile} from '../assets'
+import { BgImage, NoProfile } from '../assets'
 
 const Login = () => {
   const {
@@ -19,12 +19,17 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const dispatch = useDispatch();
 
+  const onSubmit = data => {
+    // handle form submission
+    console.log(data);
+  };
+
   return (
     <div className="bg-bgColor w-full h-[100vh] flex items-center justify-center p-6">
-      <div className="w-full md:w-2/3 h-fit lg:h-full 2xl:h-5/6 py-8 lg:py-0 flex bg-primary rounded-xl overflow-hidden shadow-xl ">
+      <div className="w-full md:w-2/3 h-fit lg:h-full 2xl:h-5/6 py-8 lg:py-0 flex bg-primary rounded-xl overflow-hidden shadow-xl">
         
         {/* LEFT */}
-        <div classname="w-full lg:w-1/2 h-full p-10 2xl:px-20 flex flex-col justify-center ">
+        <div className="w-full lg:w-1/2 h-full p-10 2xl:px-20 flex flex-col justify-center">
           <div className="flex items-center w-full gap-2 mb-6">
             <div className="p-2 bg-[#065ad8] rounded text-white">
               <TbSocial />
@@ -34,14 +39,12 @@ const Login = () => {
             </span>
           </div>
 
-
           <p className="text-ascent-1 text-base font-semibold">
             Log in to your account
           </p>
           <span className="text-sm mt-2 text-ascent-2">Welcome back</span>
 
-
-          <form action="" className="py-8 flex flex-col gap-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="py-8 flex flex-col gap-5">
             <TextInput 
               name='email'
               placeholder='email@example.com'
@@ -51,7 +54,7 @@ const Login = () => {
               })}
               styles="w-full rounded-full"
               labelStyle="ml-2"
-              error={errors.email ? errors.email.message: ""}
+              error={errors.email ? errors.email.message : ""}
             />
 
             <TextInput 
@@ -59,47 +62,41 @@ const Login = () => {
               placeholder='*************'
               label='password'
               register={register("password", {
-                required: "Email Address is required"
+                required: "Password is required"
               })}
               styles="w-full rounded-full"
               labelStyle="ml-2"
-              error={errors.password ? errors.password?.message: ""}
+              error={errors.password ? errors.password.message : ""}
             />
 
             <Link
               to='/reset-password'
               className="text-sm text-right text-blue font-semibold"
             >
-              Forgot Password ?
+              Forgot Password?
             </Link>
 
             {
-              errMsg?.message && (
-                <span className={`text-sm ${
-                  errMsg?.status == "failed" 
-                  ? "text-[#f64949fe]"
-                  : "text-[#2ba150fe]"
-                } mt-0.5`}>
-                  {errMsg?.message}
+              errMsg && (
+                <span className={`text-sm ${errMsg.status === "failed" ? "text-[#f64949fe]" : "text-[#2ba150fe]"} mt-0.5`}>
+                  {errMsg.message}
                 </span>
               )
             }
 
             {
-              isSubmitting ? <Loading />: <CustomButton 
-
-                type="submit"
-                containerStyles={`inline-flex justify-center rounded-md 
-                                  bg-blue px-8 py-8 text-sm font-medium 
-                                  text-white outline-none
-                                `}
-                title='Login'
-              />
+              isSubmitting ? <Loading /> : (
+                <CustomButton 
+                  type="submit"
+                  containerStyles="inline-flex justify-center rounded-md bg-blue px-8 py-2 text-sm font-medium text-white outline-none"
+                  title='Login'
+                />
+              )
             }
           </form> 
 
           <p className="text-ascent-2 text-sm text-center">
-            Don't have an account ?
+            Don't have an account?
             <Link
               to='/register'
               className='text-[#065ad8] font-semibold ml-2 cursor-pointer'
@@ -110,7 +107,7 @@ const Login = () => {
         </div>
         
         {/* RIGHT */}
-        <div classname="hidden w-1/2 h-full lg:flex flex-col items-center justify-center bg-blue">
+        <div className="hidden w-1/2 h-full lg:flex flex-col items-center justify-center bg-blue">
           <div className="relative w-full flex items-center justify-center">
             <img 
               src={BgImage} 
