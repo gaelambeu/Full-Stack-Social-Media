@@ -91,7 +91,7 @@ const Login = () => {
                 containerStyles={}
               />
             }
-          </form>
+          </form> 
         </div>
         
         {/* RIGHT */}
