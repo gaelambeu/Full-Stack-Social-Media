@@ -3,7 +3,8 @@ import {useDispatch} from "react-redux"
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form"
 import { TbSocial } from "react-icons/tb"
-import { TextInput } from '../components'
+import { TextInput, Loading, CustomButton } from '../components'
+import {BgImage, NoProfile} from '../assets'
 
 const Login = () => {
   const {
@@ -19,8 +20,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full bg-bgColor h-[100vh] flex items-center justify-center p-6">
-      <div className="flex w-full py-8 overflow-hidden shadow-xl md:w-2/3 h-fit lg:h-full 2xl:h-5/6 lg:py-0 bg-primary rounded-xl ">
+    <div className="bg-bgColor w-full h-[100vh] flex items-center justify-center p-6">
+      <div className="w-full md:w-2/3 h-fit lg:h-full 2xl:h-5/6 py-8 lg:py-0 flex bg-primary rounded-xl overflow-hidden shadow-xl ">
         
         {/* LEFT */}
         <div classname="w-full lg:w-1/2 h-full p-10 2xl:px-20 flex flex-col justify-center ">
@@ -88,15 +89,35 @@ const Login = () => {
               isSubmitting ? <Loading />: <CustomButton 
 
                 type="submit"
-                containerStyles={}
+                containerStyles={`inline-flex justify-center rounded-md 
+                                  bg-blue px-8 py-8 text-sm font-medium 
+                                  text-white outline-none
+                                `}
+                title='Login'
               />
             }
           </form> 
+
+          <p className="text-ascent-2 text-sm text-center">
+            Don't have an account ?
+            <Link
+              to='/register'
+              className='text-[#065ad8] font-semibold ml-2 cursor-pointer'
+            >
+              Create Account
+            </Link>
+          </p>
         </div>
         
         {/* RIGHT */}
-        <div>
-          
+        <div classname="hidden w-1/2 h-full lg:flex flex-col items-center justify-center bg-blue">
+          <div className="relative w-full flex items-center justify-center">
+            <img 
+              src={BgImage} 
+              alt="Bg Image" 
+              className='w-48 2xl:w-64 h-48 2xl:h-64 rounded-full object-cover'
+            />
+          </div>
         </div>
       </div>
     </div>
