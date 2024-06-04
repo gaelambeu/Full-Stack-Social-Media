@@ -1,8 +1,10 @@
 import Loading from "./Loading";
 import TextInput from "./TextInput";
 import CustomButton from "./CustomButton";
+import TopBar from "./TopBar";
 
 
 
 
-export { TextInput, Loading, CustomButton }
+
+export { TextInput, Loading, CustomButton, TopBar }
