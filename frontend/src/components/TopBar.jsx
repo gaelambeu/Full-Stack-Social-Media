@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { TbSocial } from "react-icons/tb"
+import TextInput from './TextInput'
+import CustomButton from './CustomButton'
 
 
 const TopBar = () => {
@@ -19,6 +21,23 @@ const TopBar = () => {
               ShareFun
             </span>
         </Link>
+
+        <form 
+            className="hidden md:flex items-center justify-center"
+            onSubmit={handleSubmit(handleSearch)}
+        >
+            <TextInput 
+                placeholder='Search...'
+                styles='w-[18rem] lg:w-[38rem] rounded-1-full py-3'
+                register={register("search")}
+            />
+
+            <CustomButton 
+                title='Search'
+                type='submit'
+                containerStyles='bg-[#0444a4] text-white px-6 py-2.5 mt-2 rounded-r-full'
+            />
+        </form>
     </div>
   )
 }
