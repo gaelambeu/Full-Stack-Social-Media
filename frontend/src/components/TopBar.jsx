@@ -4,12 +4,22 @@ import { Link } from 'react-router-dom'
 import { TbSocial } from "react-icons/tb"
 import TextInput from './TextInput'
 import CustomButton from './CustomButton'
+import { useForm } from 'react-hook-form'
 
 
 const TopBar = () => {
     const {theme} = useSelector((state) => state.theme)
     const {user} = useSelector((state) => state.user)
     const dispatch = useDispatch();
+
+    const {
+        register, 
+        handleSubmit, 
+        formState: {errors}
+    } = useForm();
+
+    const handleSearch = async (data) => {};
+
 
   return (
     <div className="topbar w-full flex items-center justify-between py-3 md:py-6 px-4 bg-primary">
