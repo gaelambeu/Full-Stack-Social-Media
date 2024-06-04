@@ -5,6 +5,8 @@ import { TbSocial } from "react-icons/tb"
 import TextInput from './TextInput'
 import CustomButton from './CustomButton'
 import { useForm } from 'react-hook-form'
+import { BsMoon, BsSunFill } from "react-icons/bs";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 
 const TopBar = () => {
@@ -17,6 +19,12 @@ const TopBar = () => {
         handleSubmit, 
         formState: {errors}
     } = useForm();
+
+    const handleTheme = () => {
+        const themeValue = theme === "light" ? "dark" : light;
+
+        dispatch(SetTheme(themeValue))
+    }
 
     const handleSearch = async (data) => {};
 
@@ -48,6 +56,14 @@ const TopBar = () => {
                 containerStyles='bg-[#0444a4] text-white px-6 py-2.5 mt-2 rounded-r-full'
             />
         </form>
+
+        {/******** ICONS *********/}
+        <div className="flex gap-4 items-center text-ascent-1 text-md md:text-xl">
+            <button onClick={()=> handleTheme()}> {theme ? <BsMoon /> : <BsSunFill />} </button>
+            <div className="hidden lg:flex">
+                <IoMdNotificationsOutline />
+            </div>
+        </div>
     </div>
   )
 }
