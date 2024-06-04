@@ -14,6 +14,9 @@ import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   useAnimatedRef,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
 } from 'react-native-reanimated';
 
 
