@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { UpdateProfile } from '../redux/userSlice';
 import { LiaEditSolid } from "react-icons/lia"
 import { BsPersonFillAdd } from 'react-icons/bs';
-import { CiLoacationOn } from 'react-icons/ci';
+import { CiLocationOn } from "react-icons/ci";
+
 
 
 const ProfileCard = ({user}) => {
@@ -54,8 +55,11 @@ const ProfileCard = ({user}) => {
 
             <div className="w-full flex flex-col gap-2 py-4 border-b border-[#66666645]">
                 <div className="flex gap-2 items-center text-center-2">
-                    <CiLoacationOn className="text-xl text-ascent-1" />
+                    <CiLocationOn className="text-xl text-ascent-1" />
                     <span>{user?.location ?? "Add Location"}</span>
+                </div>
+
+                <div className="flex gap-2 items-center text-ascent-2">
                 </div>
             </div>
         </div>
