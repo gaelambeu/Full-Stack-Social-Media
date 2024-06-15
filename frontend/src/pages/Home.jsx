@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { ProfileCard, TopBar } from '../components'
+import { FriendsCard , ProfileCard, TopBar } from '../components'
 
 const Home = () => {
   const { user } = useSelector((state) => state.user)
@@ -13,6 +13,7 @@ const Home = () => {
         {/* LEFT */}
         <div className="flex-col hidden w-1/3 h-full gap-6 overflow-y-auto lg:w-1/4 md:flex">
           <ProfileCard user={user} />
+          <FriendsCard friends={user?.friends} />
         </div>
         
         {/* CENTER */}
