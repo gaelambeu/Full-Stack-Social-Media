@@ -1,4 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { NoProfile } from '../assets';
+
 
 const FriendsCard = ({ friends }) => {
   return (
@@ -10,9 +13,9 @@ const FriendsCard = ({ friends }) => {
             </div>
 
             <div className="flex flex-col w-full gap-4 pt-4">
-            friends?.map((friend) => (
+                {friends?.map((friend) => (
                     <Link 
-                        to={"/profile/"+ friend?_id}
+                        to={"/profile/" + friend?._id}
                         key={friend?._id}
                         className="flex items-center w-full gap-4 cursor-pointer"
                     >
@@ -21,8 +24,17 @@ const FriendsCard = ({ friends }) => {
                             alt={friend?.firstName} 
                             className="object-cover w-10 h-10 rounded-full"
                         />
-                    </Link>
-                ))
+                    
+                    <div className="flex-1">
+                        <p className="text-base font-medium text-ascent-1">
+                            {friend?.firstName} {friend?.lastName}
+                        </p>
+                        <span className="text-sm text-ascent-2">
+                            {friend?.profession ?? "No Profession"}
+                        </span>
+                    </div>
+                </Link>
+                ))}
             </div>
         </div>
     </div>

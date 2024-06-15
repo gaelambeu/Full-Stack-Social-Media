@@ -17,10 +17,19 @@ const Home = () => {
         </div>
         
         {/* CENTER */}
-        <div></div>
+        <div className="flex flex-col flex-1 h-full gap-6 px-4 overflow-y-auto bg-primary">
+          
+        </div>
         
         {/* RIGHT */}
-        <div></div>
+        <div className="flex-col hidden w-1/4 h-full gap-8 overflow-y-auto lg:flex">
+           {/* FRIEND REQUEST */}
+           <div className="w-full"></div>
+           
+           
+          {/* SUGGESTED FRIENDS */}
+          <div></div>
+        </div>
 
       </div>
     </div>
