@@ -4,9 +4,10 @@ import { NoProfile } from '../assets';
 import { Link } from 'react-router-dom';
 import { UpdateProfile } from '../redux/userSlice';
 import { LiaEditSolid } from "react-icons/lia"
-import { BsPersonFillAdd } from 'react-icons/bs';
+import { BsBriefcase, BsPersonFillAdd } from 'react-icons/bs';
 import { CiLocationOn } from "react-icons/ci";
 
+import moment from "moment"
 
 
 const ProfileCard = ({user}) => {
@@ -15,8 +16,8 @@ const ProfileCard = ({user}) => {
 
   return (
     <div>
-        <div className="flex flex-col items-center w-full px-6 py-4 rounded shadow-sm bg-primary-xl">
-            <div className="flex items-center justify-between w-full pb-5 border-[#66666645] border-b">
+        <div className="w-full bg-primary flex flex-col items-center shadow-sm rounded-xl px-6 py-4">
+            <div className="w-full flex items-center justify-between border-b pb-5 border-[#66666645]">
                 <Link to={"/profile/" + user?._id} className="flex gap-2">
                     <img 
                         src={user?.profileUrl ?? NoProfile} 
@@ -54,13 +55,41 @@ const ProfileCard = ({user}) => {
             </div>
 
             <div className="w-full flex flex-col gap-2 py-4 border-b border-[#66666645]">
-                <div className="flex gap-2 items-center text-center-2">
+                <div className="flex gap-2 items-center text-ascent-2">
                     <CiLocationOn className="text-xl text-ascent-1" />
                     <span>{user?.location ?? "Add Location"}</span>
                 </div>
 
                 <div className="flex gap-2 items-center text-ascent-2">
+                    <BsBriefcase className="text-lg text-ascent-1" />
+                    <span>{user?.profession ?? "Add Profession"}</span>
                 </div>
+            </div>
+
+            <div className="w-full flex flex-col gap-2 py-4 border-b border-[#66666645]">
+                <p className="text-xl text-ascent-1 font-semibold">
+                    {user?.friends?.length} Friends
+                </p>
+
+                <div className="flex items-center justify-between">
+                    <span className="text-ascent-2">Who viewed your profile</span>
+                    <span className="text-ascent-1 text-lg">{user?.views?.length}</span>
+                </div>
+
+                <span className="text-base text-blue">
+                    {user?.verified ? "Verified Account" : "Not Verified"}
+                </span>
+
+                <div className="flex items-center justify-between">
+                    <span className="text-ascent-2">Joined</span>
+                    <span className="text-ascent-1 text-base">
+                        {moment(user?.createdAt).fromNow()}
+                    </span>
+                </div>
+            </div>
+
+            <div className="w-full flex flex-col gap-4 py-4 pb-6">
+                <p className="text-ascent-1 text-lg font-semibold">Social Profile</p>
             </div>
         </div>
     </div>
